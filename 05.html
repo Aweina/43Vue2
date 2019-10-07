@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+button{ background: #fff; width: 100px; height: 35px}
+button:hover{background: #0000ff; color: white}
+    </style>
+</head>
+<body>
+<div id="demo1">
+
+    <my-button></my-button>
+
+</div>
+
+<script>
+    Vue.component('my-button',{
+
+        template:'<div><button @click="handleClick">{{count}}</button></div>',
+
+        data(){
+
+            return {
+
+                count:'按钮上的文本'
+
+            }
+
+        },
+
+        methods:{
+
+            handleClick(){
+
+                alert(this.count)
+
+            }
+
+        }
+
+    })
+    new Vue({
+
+        el:'#demo1'
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px
+        }
+#demo{
+    width: 200px;
+    margin: 0 auto;
+}
+          a{
+
+            width: 30px;
+            background: midnightblue;
+            color: white;
+            border: 2px solid midnightblue;
+            text-decoration: none;
+
+
+        }
+
+        input[type="text"] {
+
+            height: 30px;
+            width: 50px;
+            border: 2px solid midnightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <my-button></my-button>
+</div>
+
+
+
+
+<script>
+    Vue.component('my-button', {
+        template: `<div>
+    <a href="#"  @click="jiaClick">+</a>
+    <input type="text" v-model="count" />
+    <a href="#"  @click="jianClick">-</a>
+</div>`,
+        data() {
+            return {
+                count:1
+            }
+        },
+        methods:{
+            jiaClick(){
+           this.count++
+            },
+            jianClick(){
+                if (this.count>1){
+                    this.count--
+                } else{
+                    alert("数量为1，不能再减")
+
+                }
+            }
+        },
+        watch:{
+            count(){
+                var reg = new RegExp(/^\D\d|\d\D|\D$/);
+                if (this.count.match(reg)){
+                    alert("输入数据不合法")
+                    this.count=1
+                }
+            }
+        }
+    })
+    new Vue({
+        el:'#demo'
+    })
+</script>
+</body>
+</html>
